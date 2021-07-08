@@ -8,7 +8,7 @@ module.exports = {
         let userid = message.member.id
 
         if(keyword.includes(' ')) {
-            send('Error: Keyword can\'t contain spaces', message.channel, 30000)
+            send('Error: Keyword can\'t contain spaces', message.channel, 60000)
             return;
         }
 
@@ -16,15 +16,15 @@ module.exports = {
         if(content.hasOwnProperty(userid)) {
             if(content[userid].length <= 5 || checkroles(message.member.roles.cache, '500260043535417364')) {
                 content[userid][keyword] = command
-                send(`Changed '${command}' to work with keyword '${keyword}'`, message.channel, 30000)
+                send(`Changed '${command}' to work with keyword '${keyword}'`, message.channel, 60000)
             } else {
-                send('Can\'t add the command: Your 5 slotes are already full', message.channel, 30000)
+                send('Can\'t add the command: Your 5 slotes are already full', message.channel, 60000)
             }
         } else {
             let map = {}
             map[keyword] = command
             content[userid] = map
-            send(`Added '${command}' to work with keyword '${keyword}'`, message.channel, 30000)
+            send(`Added '${command}' to work with keyword '${keyword}'`, message.channel, 60000)
         }
 
         fs.writeFileSync(path.join(__dirname, '../data/saves.json'), JSON.stringify(content, null, 4), function writeJSON(err) {
