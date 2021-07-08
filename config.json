@@ -4,7 +4,7 @@
     },
     "comms" : {
         "prefix" : "-",
-        "embedColor" : "#005aa5"
+        "embedColor" : "#005aa3"
     },
     "saves" : {
         "prefix" : ":"
