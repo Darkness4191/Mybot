@@ -31,10 +31,22 @@ function exitHandler(options) {
 	}
 }
 
+//setup
 process.on('exit', exitHandler.bind(null, {cleanup:true}));
 process.on('SIGINT', exitHandler.bind(null, {exit:true}));
 process.on('uncaughtException', exitHandler.bind(null, {exit:true}));
 
+if (!fs.existsSync('./data')) {
+	fs.mkdirSync('./data', {
+		recursive: true
+	});
+}
+
+fs.writeFileSync('./data/saves.json', '{\n\n}', function writeJSON(err) {
+	console.log(err);
+});
+
+//login from .env file
 client.login(`${process.env.FIREBOT_TOKEN}`);
 
 module.exports = {
