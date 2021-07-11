@@ -16,6 +16,7 @@ client.on('ready', () => {
 	commands.updateCommands(client);
 });
 
+//cleanup
 function exitHandler(options) {
     if (options.cleanup) {
 		console.log("Performing cleanup")
